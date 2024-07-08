@@ -15,8 +15,8 @@ const getAllPosts = (req, res) => {
 }
 
 const getSinglePost = (req, res) => {
-    conn.execute(`SELECT users.id, users.name, posts.id AS PostsId, posts.title, posts.description FROM users JOIN posts ON users.id = posts.user_id WHERE posts.id = ${req.params.id}`, (err, data) => {
-        res.status(200).json({ message: "Success", post: data });
+    conn.execute(`SELECT users.id, users.name, posts.id AS PostsId, posts.title, posts.description FROM users JOIN posts ON users.id = posts.user_id WHERE posts.id = ${req.params.id}`, async (err, data) => {
+        await res.status(200).json({ message: "Success", post: data });
     })
 }
 
